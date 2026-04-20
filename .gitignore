@@ -1,0 +1,7 @@
+node_modules/
+data/library.db
+.env
+.DS_Store
+npm-debug.log*
+out.log
+err.log

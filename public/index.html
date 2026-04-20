@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Library Management System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Libre+Baskerville:wght@700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <section id="guestLandingView" class="landing-page active-view">
+    <nav class="landing-nav">
+      <div class="brand-wrapper">
+        <div class="brand-mark landing-logo">SL</div>
+        <span class="brand-name">Smart Library</span>
+      </div>
+      <div class="nav-links">
+        <button id="navLoginBtn" class="btn btn-ghost">Login</button>
+      </div>
+    </nav>
+    <div class="landing-hero">
+      <div class="landing-hero-content">
+        <p class="eyebrow accent fade-in-up">The Future of Reading</p>
+        <h1 class="fade-in-up delay-1">Read, Manage, and Discover with Ease</h1>
+        <p class="fade-in-up delay-2">Your beautiful and modern library workspace. A seamless experience for readers to
+          discover books and for administrators to manage it all.</p>
+        <div class="landing-actions fade-in-up delay-3">
+          <button id="heroGetStartedBtn" class="btn btn-primary btn-large">Get Started Now</button>
+        </div>
+      </div>
+    </div>
+    <div id="features" class="landing-features">
+      <div class="section-heading text-center">
+        <p class="eyebrow accent">Features</p>
+        <h2>Everything you need for a modern library</h2>
+      </div>
+      <div class="feature-cards">
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <h3>Extensive Catalog</h3>
+          <p>Search through thousands of titles instantly with our advanced search algorithms.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Realtime Tracking</h3>
+          <p>Know exactly when your books are due and avoid late fees with our robust system.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>Secure & Reliable</h3>
+          <p>All user data and transactions are securely protected within the platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="pageShell" class="page-shell auth-layout hidden">
+    <section id="heroPanel" class="hero-panel">
+      <div class="brand-mark">SL</div>
+      <p class="eyebrow">Smart Library Suite</p>
+      <h1>Borrow smarter. Manage faster. Keep every due date visible.</h1>
+      <p class="hero-copy">
+        A modern library workspace for readers and administrators with book search, secure logins,
+        transaction reporting, fine tracking, and return reminders in one place.
+      </p>
+      <div class="hero-features">
+        <div>
+          <strong>Reader Access</strong>
+          <span>Search, borrow, monitor due dates, and return books.</span>
+        </div>
+        <div>
+          <strong>Admin Control</strong>
+          <span>Manage inventory, review transactions, calculate fines, and send reminders.</span>
+        </div>
+      </div>
+
+    </section>
+
+    <main class="app-panel">
+      <section id="loginView" class="card auth-card active-view">
+        <div class="section-heading">
+          <p class="eyebrow accent">Welcome Back</p>
+          <h2>Login to your library dashboard</h2>
+        </div>
+        <form id="loginForm" class="form-grid">
+          <label>
+            <span>Username</span>
+            <input type="text" id="username" placeholder="Enter username" required />
+          </label>
+          <label>
+            <span>Password</span>
+            <input type="password" id="password" placeholder="Enter password" required />
+          </label>
+          <div style="text-align: right; margin-top: -8px;">
+            <a href="#" id="forgotPasswordBtn" class="accent"
+              style="font-size: 0.85rem; font-weight: 600; text-decoration: none;">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary full-width">Login</button>
+        </form>
+        <div class="auth-divider"><span>New user?</span></div>
+        <div class="section-heading auth-subheading">
+          <p class="eyebrow accent">Create Account</p>
+          <h3>Register as a library member</h3>
+        </div>
+        <form id="registerForm" class="form-grid compact">
+          <label><span>Full Name</span><input type="text" id="registerFullName" required /></label>
+          <label><span>Username</span><input type="text" id="registerUsername" pattern="[A-Za-z]+"
+              title="Only alphabetical characters are allowed" required /></label>
+          <label><span>Email</span><input type="email" id="registerEmail" required /></label>
+          <label><span>Password</span><input type="password" id="registerPassword" placeholder="Minimum 6 characters"
+              required /></label>
+          <button type="submit" class="btn btn-secondary full-width">Create Account</button>
+        </form>
+      </section>
+
+      <section id="dashboardView" class="dashboard hidden">
+        <header class="dashboard-header card">
+          <div>
+            <p class="eyebrow accent" id="roleLabel">Dashboard</p>
+            <h2 id="welcomeText">Hello</h2>
+            <p id="statusText">Manage books, borrowings, and users from one place.</p>
+          </div>
+          <div class="header-actions">
+            <button id="showUsersBtn" class="btn btn-secondary hidden">Show Users</button>
+            <button id="showTransactionsBtn" class="btn btn-secondary hidden">Show Transactions</button>
+            <button id="backToDashboardBtn" class="btn btn-secondary hidden">Back To Dashboard</button>
+            <button id="payAllFinesBtn" class="btn btn-primary hidden">Pay Fines</button>
+            <button id="refreshBtn" class="btn btn-secondary">Refresh Data</button>
+            <button id="logoutBtn" class="btn btn-ghost">Logout</button>
+          </div>
+        </header>
+
+        <section id="userDashboard" class="hidden">
+          <div class="dashboard-grid user-grid">
+            <article class="card">
+              <div class="section-heading inline">
+                <div>
+                  <p class="eyebrow accent">Book Search</p>
+                  <h3>Find your next read</h3>
+                </div>
+                <input type="search" id="searchInput" placeholder="Search by title, author, category or ISBN" />
+              </div>
+              <div id="booksList" class="book-grid"></div>
+            </article>
+
+            <article class="card">
+              <div class="section-heading">
+                <p class="eyebrow accent">My Borrowings</p>
+                <h3>Track due dates and returns</h3>
+              </div>
+              <div id="myTransactions" class="table-wrapper"></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="adminDashboard" class="hidden">
+          <div class="stats-grid" id="statsGrid"></div>
+
+          <div class="dashboard-grid admin-grid">
+            <article class="card">
+              <div class="section-heading">
+                <p class="eyebrow accent">Inventory</p>
+                <h3>Add or update books</h3>
+              </div>
+              <form id="bookForm" class="form-grid compact">
+                <input type="hidden" id="bookId" />
+                <label><span>Title</span><input type="text" id="bookTitle" required /></label>
+                <label><span>Author</span><input type="text" id="bookAuthor" required /></label>
+                <label><span>ISBN</span><input type="text" id="bookIsbn" required /></label>
+                <label><span>Category</span><input type="text" id="bookCategory" required /></label>
+                <label><span>Total Copies</span><input type="number" id="bookCopies" min="1" required /></label>
+                <label class="full-width"><span>Description</span><textarea id="bookDescription"
+                    rows="3"></textarea></label>
+                <div class="button-row full-width">
+                  <button type="submit" class="btn btn-primary">Save Book</button>
+                  <button type="button" id="cancelEditBtn" class="btn btn-ghost">Clear</button>
+                </div>
+              </form>
+            </article>
+
+            <article class="card">
+              <div class="section-heading inline">
+                <div>
+                  <p class="eyebrow accent">Catalog</p>
+                  <h3>Current collection</h3>
+                </div>
+                <input type="search" id="adminSearchInput" placeholder="Search books" />
+              </div>
+              <div id="adminBooksList" class="table-wrapper"></div>
+            </article>
+          </div>
+
+        </section>
+
+        <section id="adminUsersPage" class="hidden">
+          <article class="card">
+            <div class="section-heading inline">
+              <div>
+                <p class="eyebrow accent">Members</p>
+                <h3>Registered user list</h3>
+              </div>
+              <input type="search" id="userSearchInput" placeholder="Search by name, username, or email" />
+            </div>
+            <div id="usersList" class="table-wrapper"></div>
+          </article>
+        </section>
+
+        <section id="adminTransactionsPage" class="hidden">
+          <article class="card">
+            <div class="section-heading">
+              <p class="eyebrow accent">Transactions</p>
+              <h3>Book and fine overview</h3>
+            </div>
+            <div id="reportTable" class="table-wrapper"></div>
+          </article>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div id="paymentModalOverlay" class="modal-overlay hidden">
+    <div class="payment-modal card">
+      <div class="payment-header">
+        <h3>Secure Checkout</h3>
+        <button id="closePaymentModalBtn" class="btn btn-icon">&times;</button>
+      </div>
+      <div class="payment-body">
+        <div class="payment-summary">
+          <p class="eyebrow accent">Amount Due</p>
+          <h2 id="paymentAmountDisplay">Rs. 0.00</h2>
+          <p id="paymentBookDisplay" class="muted">Book Title Placeholder</p>
+        </div>
+        <div class="payment-content">
+          <div class="qr-col">
+            <p><strong>Scan & Pay</strong></p>
+            <div class="qr-container">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=mock-library-payment"
+                alt="Payment QR Code" />
+            </div>
+            <p class="muted small">Supports all major UPI apps</p>
+          </div>
+          <div class="options-col">
+            <p><strong>Other Methods</strong></p>
+            <label class="payment-method">
+              <input type="radio" name="paymentMethod" value="netbanking" />
+              <span>Net Banking</span>
+            </label>
+            <label class="payment-method">
+              <input type="radio" name="paymentMethod" value="card" checked />
+              <span>Credit / Debit Card</span>
+            </label>
+            <label class="payment-method">
+              <input type="radio" name="paymentMethod" value="wallet" />
+              <span>Wallets</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="payment-footer">
+        <button id="confirmPaymentBtn" class="btn btn-primary full-width">Pay Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="app.js"></script>
+</body>
+
+</html>
